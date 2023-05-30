@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { fetchArticles } from '../utils'
+import { fetchArticles } from '../../utils'
 import { Link } from 'react-router-dom';
 
 
 function ArticleList() {
     const [articles, setArticles] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetchArticles().then(({articles}) => {
             setArticles(articles);
+            setIsLoading(false);
         })
     }, []);
 
+    //Loading State
+    if (isLoading) {
+        return (
+            <p className="loading-state">Loading...</p>
+        )
+    }
 
 
+    //Rendering State
     return (
         <main classname="articles-page">
             <h2>Available Articles</h2>

@@ -1,8 +1,8 @@
 import './App.css'
-import ArticleList from '../Components/ArticleList'
+import ArticleList from './Components/ArticleList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from '../Components/Home'
-import Nav from '../Components/Nav'
+import Home from './Components/Home'
+import Nav from './Components/Nav'
 
 
 function App() {
