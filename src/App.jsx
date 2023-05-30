@@ -1,15 +1,24 @@
-import { useState } from 'react'
 import './App.css'
-import ArticleList from './ArticleList'
+import ArticleList from './Components/ArticleList'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './Components/Home'
+import Nav from './Components/Nav'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <>
-      
-    </>
+    <BrowserRouter>
+      <main className='App'>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/articlelist' element={<ArticleList />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
   )
 }
 
-export default App
+export default App;
