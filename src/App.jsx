@@ -3,7 +3,7 @@ import ArticleList from './Components/ArticleList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Components/Home'
 import Nav from './Components/Nav'
-import ArticlesById from './Components/ArticlesById'
+import ArticleById from './Components/ArticleById'
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/articlelist' element={<ArticleList />} />
-          <Route path='/articlesById/:article_id' element={<ArticlesById />} />
+          <Route path='/articleById/:article_id' element={<ArticleById />} />
         </Routes>
       </main>
     </BrowserRouter>

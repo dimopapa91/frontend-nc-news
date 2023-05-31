@@ -15,7 +15,7 @@ function fetchArticles() {
     })
 }
 
-function fetchArticlesById(article_id) {
+function fetchArticleById(article_id) {
     return articlesApi
     .get(`/articles/${article_id}`)
     .then((res) => {
@@ -29,5 +29,5 @@ function fetchArticlesById(article_id) {
 
 export {
     fetchArticles,
-    fetchArticlesById
+    fetchArticleById
 }

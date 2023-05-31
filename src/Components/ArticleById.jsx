@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { fetchArticlesById } from "../../utils";
+import { fetchArticleById } from "../../utils";
 import { useParams } from "react-router-dom";
 
 
-function ArticlesById() {
+function ArticleById() {
     const [article, setArticle] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const {article_id} = useParams();
 
     useEffect(() => {
-        fetchArticlesById(article_id)
+        fetchArticleById(article_id)
         .then(({article}) => {
             setArticle(article);
             setIsLoading(false);
@@ -41,4 +41,4 @@ function ArticlesById() {
 }
 
 
-export default ArticlesById;
+export default ArticleById;
