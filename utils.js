@@ -15,6 +15,32 @@ function fetchArticles() {
     })
 }
 
+function fetchArticleById(article_id) {
+    return articlesApi
+    .get(`/articles/${article_id}`)
+    .then((res) => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+function fetchComments(article_id) {
+    return articlesApi
+    .get(`/articles/${article_id}/comments`)
+    .then((res) => {
+        return res.data;
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
+
+
+
 export {
-    fetchArticles
+    fetchArticles,
+    fetchArticleById,
+    fetchComments
 }
