@@ -37,10 +37,32 @@ function fetchComments(article_id) {
     })
 }
 
+function plusVotesArticle(article_id) {
+    const incVote = {in_votes: 1}
+    return articlesApi
+    .patch(`/articles/${article_id}`, incVote)
+    .then(({data}) => data)
+    .catch(err => {
+        console.log(err)
+    });
+}
+
+function minusVotesArticle(article_id) {
+    const incVote = {inc_votes: -1}
+    return articlesApi
+    .patch(`/articles/${article_id}`, incVote)
+    .then(({data}) => data)
+    .catch(err => {
+        console.log(err);
+    });
+}
+
 
 
 export {
     fetchArticles,
     fetchArticleById,
-    fetchComments
+    fetchComments,
+    plusVotesArticle,
+    minusVotesArticle
 }

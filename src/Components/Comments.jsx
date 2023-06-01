@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { fetchComments } from "../../utils";
+import moment from "moment";
 
 
 function Comments({article_id}) {
@@ -33,7 +34,7 @@ function Comments({article_id}) {
                     <br></br>
                     <p>{ body }</p>
                     <p>Votes: {votes}</p>
-                    <p>By: {author} | {created_at}</p>
+                    <small>By: {author} | Posted on: {moment(`${created_at}`).format("Do MMMM YYYY")}{" "}</small>
                     </li>
                 })}
             </ul>
