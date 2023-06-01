@@ -9,6 +9,7 @@ import Comments from "./Comments";
         const [article, setArticle] = useState([])
         const [isLoading, setIsLoading] = useState(true);
         const {article_id} = useParams();
+        const [clicked, setClicked] = useState(false);
 
      useEffect(() => {
             fetchArticleById(article_id)
@@ -24,13 +25,12 @@ import Comments from "./Comments";
         })
         plusVotesArticle(article_id)
         .then(() => {
+            setClicked(true);
             return {...article, votes: article.votes - 1}
         })
         .catch((err) => {
-            if(err) {
-                return <p>Error</p>
-            }
-        })
+            console.error(err);
+            })
     }
 
     function handleMinusVotes() {
@@ -39,6 +39,7 @@ import Comments from "./Comments";
         })
         minusVotesArticle(article_id)
         .then(() => {
+            setClicked(true);
             return {...article, votes: article.votes + 1}
         })
         .catch((err) => {
@@ -71,8 +72,8 @@ import Comments from "./Comments";
             </img>
             <h2 className="vote-buttons">Vote don't be shy</h2>
             <br></br>
-            <button onClick={() => {handlePlusVotes(article_id)}} className="plus-button">+</button>
-            <button onClick={() => {handleMinusVotes(article_id)}} className="minus-button">-</button>
+            <button onClick={() => {handlePlusVotes(article_id)}} disabled={clicked} className="plus-button"> + </button>
+            <button onClick={() => {handleMinusVotes(article_id)}} disabled={clicked} className="minus-button"> - </button>
             <p className="article-votes">Votes: {article.votes}</p>
             </div>
             <small>{article.votes}</small>
