@@ -8,7 +8,8 @@ function ArticleList() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetchArticles().then(({articles}) => {
+        fetchArticles()
+            .then(({articles}) => {
             setArticles(articles);
             setIsLoading(false);
         })
@@ -28,7 +29,7 @@ function ArticleList() {
             <h2>Available Articles</h2>
             <ul>
                 {articles.map(({ article_id, title, body, article_img_url }) => {
-                    return <li key={ article_id }><Link to={ `/articles/${ article_id }` }>{ title }</Link>
+                    return <li key={ article_id }><Link to={ `/articleById/${ article_id }` }>{ title }</Link>
                     <br></br>
                     <img 
                         src={ article_img_url } 
