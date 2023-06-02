@@ -57,6 +57,17 @@ function minusVotesArticle(article_id) {
     });
 }
 
+function postComment(article_id, commentData) {
+    return articlesApi
+    .post(`/articles/${article_id}/comments`, commentData)
+    .then((res) => {
+        return res.data;
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+}
+
 
 
 export {
@@ -64,5 +75,6 @@ export {
     fetchArticleById,
     fetchComments,
     plusVotesArticle,
-    minusVotesArticle
+    minusVotesArticle,
+    postComment
 }

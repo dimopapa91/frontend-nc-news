@@ -20,6 +20,7 @@ function Comments({article_id}) {
         })
     }, []);
 
+      
     if (isLoading) {
         return (
             <p className="loading-state">Loading...</p>
@@ -27,14 +28,15 @@ function Comments({article_id}) {
     } else {
         return (
             <>
-            <h3>Comments:</h3>
+            <br></br><br></br><br></br><br></br>
+            <h3 className="comments-text">Comments:</h3>
         <ul>
                 {comments.map(({ comment_id, author, body, votes, created_at }) => {
                     return <li key={ comment_id }>
                     <br></br>
-                    <p>{ body }</p>
-                    <p>Votes: {votes}</p>
-                    <small>By: {author} | Posted on: {moment(`${created_at}`).format("Do MMMM YYYY")}{" "}</small>
+                    <p className="body-text-comments">{ body }</p>
+                    <p className="article-votes">Votes: {votes}</p>
+                    <small className="author-text">By: {author} | Posted on: {moment(`${created_at}`).format("Do MMMM YYYY")}{" "}</small>
                     </li>
                 })}
             </ul>
