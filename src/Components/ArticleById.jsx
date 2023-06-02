@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { fetchArticleById, plusVotesArticle, minusVotesArticle } from "../../utils";
+import { fetchArticleById, plusVotesArticle, minusVotesArticle, postComment } from "../../utils";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
 
 
 
-    function ArticleById() {
+    function ArticleById({user}) {
         const [article, setArticle] = useState([])
         const [isLoading, setIsLoading] = useState(true);
         const {article_id} = useParams();
         const [clicked, setClicked] = useState(false);
+        const [formData, setFormData] = useState({
+            username: user.username,
+            body: ""
+        });
+        const [submitting, setSubmitting] = useState(false);
 
      useEffect(() => {
             fetchArticleById(article_id)
@@ -17,7 +22,7 @@ import Comments from "./Comments";
                 setArticle(article);
                 setIsLoading(false);
          })
-    }, []);
+    }, [article_id]);
 
     function handlePlusVotes() {
         setArticle((article) => {
@@ -49,6 +54,34 @@ import Comments from "./Comments";
         })
     }
 
+    function handleChange(event) {
+        event.preventDefault();
+        setFormData({...formData, body: event.target.value})
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log("Form submitted");
+        if(!formData.username || !formData.body) {
+            return "Error";
+        }
+        setSubmitting(true);
+        postComment(article_id, formData)
+            .then((res) => {
+                console.log("Comment posted successfully");
+                setFormData({
+                    username: "",
+                    body: ""
+                });
+        })
+        .catch((err) => {
+            console.error("Error posting comment:", err);
+        })
+        .finally(() => {
+            setSubmitting(false);
+        });
+    }
+
 
     if (isLoading) {
         return (
@@ -70,13 +103,24 @@ import Comments from "./Comments";
                 alt={article.title} 
                 className="article-img">
             </img>
-            <h2 className="vote-buttons">Vote don't be shy</h2>
+            <h2 className="vote-buttons">Thoughts?</h2>
             <br></br>
             <button onClick={() => {handlePlusVotes(article_id)}} disabled={clicked} className="plus-button"> + </button>
             <button onClick={() => {handleMinusVotes(article_id)}} disabled={clicked} className="minus-button"> - </button>
             <p className="article-votes">Votes: {article.votes}</p>
             </div>
             <small>{article.votes}</small>
+            <form onSubmit={handleSubmit} className="formcomment-submit">
+                <textarea
+                    name="body"
+                    placeholder="Your Comment"
+                    value={formData.body}
+                    onChange={handleChange}
+                    required
+                ></textarea>
+                <br></br>
+                <button type="submit" disabled={submitting} className="postcomment-submit">Submit</button>
+            </form>
             <Comments article_id = {article_id} />
         </main>
     )

@@ -25,8 +25,8 @@ function ArticleList() {
 
     //Rendering State
     return (
-        <main classname="articles-page">
-            <h2>Available Articles</h2>
+        <main>
+            <h2 classname="heading-text">Available Articles</h2>
             <ul>
                 {articles.map(({ article_id, title, body, article_img_url }) => {
                     return <li key={ article_id }><Link to={ `/articleById/${ article_id }` }>{ title }</Link>

@@ -18,6 +18,14 @@ nav {
   filter: drop-shadow(0 0 3em #000000cc); 
 }
 
+.header-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+}
+
 .home-page {
   display: flex;
   flex-direction: column;
@@ -33,6 +41,7 @@ nav {
   font-size: 48px;
   letter-spacing: 2px;
   animation: animate-text 1.5s infinite;
+  color: black;
 }
 
 
@@ -68,9 +77,6 @@ li {
   height: auto;
 }
 
-.articles-page {
-  display: grid;
-}
 
 .article-id {
   max-width: 800px;
@@ -82,6 +88,7 @@ li {
 .article-heading {
   font-size: 24px;
   margin-bottom: 1rem;
+  color: black;
 }
 
 .article-details {
@@ -91,15 +98,18 @@ li {
 .article-title {
   font-size: 20px;
   font-weight: bold;
+  color: black;
 }
 
 .article-topic,
 .article-author {
   margin: 0.5rem 0;
+  color: black;
 }
 
 .article-body {
   text-align: justify;
+  color: black;
 }
 
 .article-img {
@@ -114,8 +124,58 @@ li {
   justify-content: center;
   font-size: 16px;
   font-weight: bold;
-  height: 50px; /* Adjust the height as needed */
+  height: 50px;
+  color: black;
 }
+
+.comments-text {
+  color: black;
+}
+
+.vote-buttons {
+  color: black;
+}
+
+.plus-button,
+.minus-button {
+  margin-inline: 10px;
+  background-color:#e9c88e;
+  border: none;
+  cursor: pointer;
+  padding: 5;
+  font-size: 25px;
+  color: black;
+}
+
+.postcomment-submit {
+  color: whitesmoke;
+  margin-inline: 10px;
+  border: none;
+  margin-bottom: 20px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.formcomment-submit {
+  margin-inline: 10px;
+  border: none;
+  margin-bottom: 20px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.article-votes {
+  color: black;
+}
+
+.author-text {
+  color: black;
+}
+
+.body-text-comments {
+  color:#4d3e2f;
+}
+
 
 .logo {
   height: 6em;
@@ -126,15 +186,15 @@ li {
 
 .home-button,
 .articles-button {
-  color: #fff;
+  color: black;
   font-size: 20px;
   text-align: center;
 }
 
 body {
-  /* background-image: url("/Screenshots/wallpaperNews.jpg"); */
-  background-size: cover;
-  background-position: center;
+  background-color: antiquewhite;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .animate-character {
@@ -147,11 +207,12 @@ body {
 h1 {
   color: rgb(206, 218, 218);
   font-size: small;
+  color: black
 }
 
 h2 {
   margin-top: 80px;
-  color: rgb(206, 218, 218);
+  color: rgb(57, 49, 49);
 }
 
 p {
@@ -163,11 +224,11 @@ a {
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #33608daa);
+  filter: drop-shadow(0 0 2em #537597aa);
 }
 
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #5cdcffaa);
+  filter: drop-shadow(0 0 2em #0e0f0faa);
 }
 
 
